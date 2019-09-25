@@ -1,16 +1,16 @@
 import random
+
 import requests
 from spellcheck import spellcheck
 import re
 import json
 from pprint import pprint
-import Levenshtein
 import nltk
 
 from nltk.corpus import wordnet as wn
 from nltk.stem.porter import PorterStemmer
 from nltk.stem import WordNetLemmatizer
-
+from config import *
 
 with open('OntologyToLemmas.json', 'r') as fp:
 	    key2lemmas=json.load(fp)
@@ -20,7 +20,7 @@ with open('LemmasToOntology.json', 'r') as fp:
 	    lemma2key=json.load(fp)
 
 ##Return the lemma with higheset similarity if its greater than threshold
-threshold=0.3
+
 def check_lemmas(user_input):
 	wordnet_lemmatizer=WordNetLemmatizer()
 	input_lemma=wordnet_lemmatizer.lemmatize(user_input)
